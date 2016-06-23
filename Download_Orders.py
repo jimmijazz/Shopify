@@ -1,9 +1,9 @@
 import shopify, requests,json, codecs
 
 SHOP_NAME = "shootenstuff"
-API_KEY = "45e38bf820a1f7090718b99ee84708cb"
-PASSWORD = "639d230d1de46f5a92956d6c65de5d60"
-SHARED_SECRET = "d59da38ea0f72c3b131a2adebc01a0dd"
+API_KEY = "your api key"
+PASSWORD = "your password"
+SHARED_SECRET = "shared secret"
 
 reader = codecs.getreader("utf-8") # http://stackoverflow.com/questions/6862770/python-3-let-json-object-accept-bytes-or-let-urlopen-output-strings
 s = requests.Session()
