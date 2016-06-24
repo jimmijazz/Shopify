@@ -1,6 +1,6 @@
 import shopify, requests,json, codecs
 
-SHOP_NAME = "shootenstuff"
+SHOP_NAME = "your shopname"
 API_KEY = "your api key"
 PASSWORD = "your password"
 SHARED_SECRET = "shared secret"
