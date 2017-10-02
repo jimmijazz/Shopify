@@ -1,0 +1,34 @@
+##### OLD PRODUCTS #####
+## Finds products created before a certain date and with non-zero inventory. Returns the product ID ##
+## Useful for running "old stock" sales or clearing out inventory ##
+
+import shopify, requests, json
+
+SHOP_NAME = "{YOUR_SHOP_NAME}" # Shop name not including.myshopify
+API_KEY =  "{YOUR_PRIVATE_APP_KEY}" # Private App Key
+PASSWORD = "{YOUR_PRIVATE_APP_PASSWORD}" # Private App PASSWORD
+
+max_date = "2017-10-02" # Only return products created before this date. Format  = YYYY-MM-DD
+
+s = requests.Session() # Establish new requests Session
+s.auth = (API_KEY, PASSWORD)
+
+shop_url = "https://%s:%s@%s.myshopify.com/admin" % (API_KEY, PASSWORD, SHOP_NAME)
+shopify.ShopifyResource.set_site(shop_url)
+shop = shopify.Shop.current()
+
+# Get all products created before max_date, in JSON format
+response = s.get("https://%s.myshopify.com/admin/products.json?created_at_max=%sT16:15:47-04:00" % (SHOP_NAME, max_date))
+data = response.json()
+
+old_products = [] # Array that holds the ID's of desired products
+
+# Loop over each product returned from query
+for product in data['products']:
+    # Loop through product's variants
+    for variant in product['variants']:
+        # Filter out products with zero inventory
+        if variant['inventory_quantity'] != 0:
+            old_products.append(variant['product_id'])
+
+print(old_products)
