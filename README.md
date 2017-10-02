@@ -1,3 +1,3 @@
 # Shopify
 
-An example for using the Shopify API to get orders with Python.
+Various Python examples and useful scripts for making use of the Shopify API.
