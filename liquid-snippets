@@ -1,0 +1,10 @@
+  
+<!-- Show a Message on the art based on variant ID -->
+
+{% for item in cart.items %}
+  {% if item.variant.id == 207500509186 %}
+      <br><br> <!-- Add a space -->
+      <p>What a great message!</p>	<!-- The message to show -->
+    {% break %} <!-- Break the for loop -->
+     {% endif %}
+{% endfor %}
