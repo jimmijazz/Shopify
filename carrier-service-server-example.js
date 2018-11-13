@@ -49,6 +49,7 @@ app.post('/shipping_rate', function(req, res) {
     ]
   };
 
+  // What to send if conditions are met
   var restricted_rates = {
     "rates": [{
         "service_name": "Terrible Shipping Rate",
@@ -62,6 +63,7 @@ app.post('/shipping_rate', function(req, res) {
     ]
   };
 
+  // If postcode is 4101
   if(req.body["rate"]["origin"]["postal_code"] == "4101") {
     res.send(JSON.stringify(restricted_rates));
   } else {
